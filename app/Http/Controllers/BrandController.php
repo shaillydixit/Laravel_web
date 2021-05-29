@@ -9,6 +9,10 @@ use Illuminate\Support\Carbon;
 use Image;
 class BrandController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
    public function AllBrand(){
        $brands = Brand::latest()->paginate(4);
        return view ('admin.brand.index', compact ('brands'));
