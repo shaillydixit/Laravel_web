@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 /*
@@ -25,7 +26,8 @@ Route::get('/email/verify', function () {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('home', compact ('brands'));
+    $abouts = DB::table('home_abouts')->first();
+    return view('home', compact ('brands','abouts'));
 });
 
 Route::get('/about', function () {
@@ -86,6 +88,20 @@ Route::get('/slider/edit/{id}', [HomeController::class, 'Edit']);
 Route::post('/slider/update/{id}', [HomeController::class, 'Update']);
 
 Route::get('/slider/delete/{id}', [HomeController::class, 'Delete']);
+
+
+//Home About All route
+Route::get('/home/about', [AboutController::class, 'HomeAbout'])->name('home.about');
+
+Route::get('/add/about', [AboutController::class, 'AddAbout'])->name('add.about');
+
+Route::post('/store/about', [AboutController::class, 'StoreAbout'])->name('store.about');
+
+Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']);
+
+Route::post('/update/homeabout/{id}', [AboutController::class, 'UpdateAbout']);
+
+Route::get('about/delete/{id}', [AboutController::class, 'DeleteAbout']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //$users = User::all();
