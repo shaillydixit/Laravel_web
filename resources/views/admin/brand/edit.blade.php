@@ -1,21 +1,21 @@
-<x-app-layout>
-    <x-slot name="header">
-       Edit Brand
-    </x-slot>
+@extends('admin.admin_master')
+@section('admin')
+
+    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>{{session('success')}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
 
     <div class="py-12">
         <div class="container">
             <div class="row">
 
 
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="card">
-                    @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>{{session('success')}}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endif
+                  
                         <div class="card-body">
                             <div class="card-header">Edit Brand</div>
                             <form action="{{ url('brand/update/'.$brands->id) }}" method="POST" enctype="multipart/form-data">
@@ -50,4 +50,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+    @endsection
