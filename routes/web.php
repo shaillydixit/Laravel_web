@@ -107,6 +107,17 @@ Route::get('about/delete/{id}', [AboutController::class, 'DeleteAbout']);
 //port
 Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio');
 
+//contact
+
+Route::get('/admin/contact', [ContactController::class, 'AdminContact'])->name('admin.contact');
+
+Route::get('/add/contact', [ContactController::class, 'AddContact'])->name('add.contact');
+
+Route::post('/store/contact', [ContactController::class, 'StoreContact'])->name('store.contact');
+
+//home contact
+
+Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //$users = User::all();
