@@ -81,6 +81,12 @@ Route::get('/add/slider', [HomeController::class, 'AddSlider'])->name('add.slide
 
 Route::post('/store/slider', [HomeController::class, 'StoreSlider'])->name('store.slider');
 
+Route::get('/slider/edit/{id}', [HomeController::class, 'Edit']);
+
+Route::post('/slider/update/{id}', [HomeController::class, 'Update']);
+
+Route::get('/slider/delete/{id}', [HomeController::class, 'Delete']);
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //$users = User::all();
     // $users = DB::table('users')->get();
