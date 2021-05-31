@@ -27,7 +27,8 @@ Route::get('/email/verify', function () {
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $abouts = DB::table('home_abouts')->first();
-    return view('home', compact ('brands','abouts'));
+    $images = DB::table('multipics')->get();
+    return view('home', compact ('brands','abouts','images'));
 });
 
 Route::get('/about', function () {
@@ -102,6 +103,10 @@ Route::get('/about/edit/{id}', [AboutController::class, 'EditAbout']);
 Route::post('/update/homeabout/{id}', [AboutController::class, 'UpdateAbout']);
 
 Route::get('about/delete/{id}', [AboutController::class, 'DeleteAbout']);
+
+//port
+Route::get('/portfolio', [AboutController::class, 'Portfolio'])->name('portfolio');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     //$users = User::all();
