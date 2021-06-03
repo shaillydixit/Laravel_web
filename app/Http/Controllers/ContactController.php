@@ -35,7 +35,7 @@ class ContactController extends Controller
     }
 
     public function ContactForm(Request $request){
-        Contact::insert([
+        ContactForm::insert([
             'name' => $request->name,
             'email' => $request->email,
             'subject' => $request->subject,
@@ -44,6 +44,18 @@ class ContactController extends Controller
         ]);
         return Redirect()->route('contact')->with('success', 'Your Msg Send Successfully');
 
+
+    }
+
+    public function AdminMessage(){
+        $messages = ContactForm::all();
+        return view ('admin.contact.message', compact('messages'));
+    }
+
+
+    public function DeleteMessage($id){
+        $delete = ContactForm::find($id)->Delete();
+        return Redirect()->back()->with('success', 'Message Deleted Successfully');
 
     }
 }

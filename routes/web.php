@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 /*
@@ -115,6 +116,9 @@ Route::get('/add/contact', [ContactController::class, 'AddContact'])->name('add.
 
 Route::post('/store/contact', [ContactController::class, 'StoreContact'])->name('store.contact');
 
+Route::get('/admin/message', [ContactController::class, 'AdminMessage'])->name('admin.message');
+
+Route::get('message/delete/{id}', [ContactController::class, 'DeleteMessage']);
 //home contact
 
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
@@ -127,4 +131,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.index');
 })->name('dashboard');
 
+///change pass
 
+Route::get('/user/password', [ChangePasswordController::class, 'ChangePassword'])->name('change.password');
+
+Route::post('/password/update', [ChangePasswordController::class, 'UpdatePassword'])->name('password.update');

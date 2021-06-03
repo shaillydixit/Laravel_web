@@ -88,7 +88,7 @@ data-target="#ui-elements" aria-expanded="false" aria-controls="ui-elements">
         </a>
     </li>
     <li class="active">
-        <a class="sidenav-item-link" href="{{route('all.brand')}}">
+        <a class="sidenav-item-link" href="{{route('admin.message')}}">
             <span class="nav-text">Contact Message</span>
 
         </a>

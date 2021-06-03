@@ -64,6 +64,7 @@
     <div class="row mt-5 justify-content-center" data-aos="fade-up">
       <div class="col-lg-10">
         <form action="{{route('contact.form')}}" method="post" >
+        @csrf
           <div class="form-row">
             <div class="col-md-6 form-group">
               <input type="text" name="name" class="form-control"  placeholder="Your Name" />
